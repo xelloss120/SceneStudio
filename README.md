@@ -1,0 +1,2 @@
+# SceneStudio
+UnityEditorから起動してSteamVRでtransformを動かして撮影(スクショ)するやつ
