@@ -53,18 +53,6 @@ namespace SceneStudio
                 Texture2D tex = new Texture2D(CamTex.width, CamTex.height, TextureFormat.RGB24, false);
                 RenderTexture.active = CamTex;
                 tex.ReadPixels(new Rect(0, 0, CamTex.width, CamTex.height), 0, 0);
-                if (PlayerSettings.colorSpace == ColorSpace.Linear)
-                {
-                    // ガンマ補正
-                    var color = tex.GetPixels();
-                    for (int i = 0; i < color.Length; i++)
-                    {
-                        color[i].r = Mathf.Pow(color[i].r, 1 / Gamma);
-                        color[i].g = Mathf.Pow(color[i].g, 1 / Gamma);
-                        color[i].b = Mathf.Pow(color[i].b, 1 / Gamma);
-                    }
-                    tex.SetPixels(color);
-                }
                 tex.Apply();
 
                 // 保存
