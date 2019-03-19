@@ -29,7 +29,14 @@ namespace SceneStudio
             if (UpdateAxis())
             {
                 Player.localScale -= new Vector3(Axis.y, Axis.y, Axis.y) * Player.localScale.x * Gain;
-                Player.position += new Vector3(0, Axis.y * Player.localScale.y * Gain, 0);// 大きさが変わると視点高さも変わるので調整
+                if (Player.localScale.x > 0.05f)
+                {
+                    Player.position += new Vector3(0, Axis.y * Player.localScale.y * Gain, 0);// 大きさが変わると視点高さも変わるので調整
+                }
+                else
+                {
+                    Player.localScale = Vector3.one * 0.05f;// 下限
+                }
             }
         }
     }
